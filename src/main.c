@@ -582,6 +582,8 @@ int main(int argc, char *argv[]) {
   start_timestamp_microseconds
       = start_timeval.tv_sec * NUM_MICROS_PER_SECOND + start_timeval.tv_usec;
 
+  printf("BISmark Passive v22\n");
+
   initialize_bismark_id();
 
   if (argc < 3 || initialize_domain_whitelist(argv[2])) {

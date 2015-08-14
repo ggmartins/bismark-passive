@@ -582,7 +582,7 @@ int main(int argc, char *argv[]) {
   start_timestamp_microseconds
       = start_timeval.tv_sec * NUM_MICROS_PER_SECOND + start_timeval.tv_usec;
 
-  printf("BISmark Passive v22\n");
+  printf("BISmark Passive v23\n");
 
   initialize_bismark_id();
 

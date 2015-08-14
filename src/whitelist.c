@@ -34,6 +34,11 @@ int domain_whitelist_load(domain_whitelist_t* whitelist,
       return -1;
     }
     ptr = NULL;
+    // special entry hack
+    if ( whitelist->domains[idx][strlen(whitelist->domains[idx])-1] == '*' ) {
+       whitelist->domains[idx][strlen(whitelist->domains[idx])-1]=0;
+       whitelist->domains[idx][strlen(whitelist->domains[idx])+1]='*';
+    }
   }
   free(contents);
 
@@ -62,6 +67,11 @@ int domain_whitelist_lookup(const domain_whitelist_t* whitelist,
         && (domain_offset == 0 || domain[domain_offset - 1] == '.')) {
         return 0;
     }
+    else if ((whitelist->domains[idx][current_length+1]=='*') &&
+             strstr(domain, whitelist->domains[idx])) {
+        return 0;
+    }
+
   }
   return -1;
 }
